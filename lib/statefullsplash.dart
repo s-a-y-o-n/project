@@ -2,12 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:project/signup_login.dart';
 
-import 'login.dart';
+// import 'login.dart';
 
 void main()
 {
-  runApp(MaterialApp(home: Splash2(),));
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Splash2(),));
 
 }
 class Splash2 extends StatefulWidget {
@@ -22,8 +25,8 @@ class Splash2State extends State<Splash2>{
 
   @override
   void initState() {
-    Timer(Duration(seconds: 5), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+    Timer(Duration(seconds: 2), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Signup()));
     });
     super.initState();
   }
