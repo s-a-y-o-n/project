@@ -26,7 +26,7 @@ class Splash2State extends State<Splash2>{
   @override
   void initState() {
     Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Signup()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Signuphm()));
     });
     super.initState();
   }

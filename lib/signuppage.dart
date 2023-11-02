@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project/home.dart';
-import 'package:project/signuppage.dart';
 
-class LoginPage extends StatelessWidget {
-   final String name = 'admin', password= 'abcd';
-  final user_controler=TextEditingController();
-  final pass_controler=TextEditingController();
+import 'login.dart';
 
-  LoginPage({super.key});
-
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +22,21 @@ class LoginPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Text('LOGIN', style: GoogleFonts.atomicAge(fontSize: 30, fontWeight: FontWeight.bold),),
+          Text('SIGNUP', style: GoogleFonts.atomicAge(fontSize: 30, fontWeight: FontWeight.bold),),
           Padding(
             padding: EdgeInsets.only(left: 22,right: 22,top: 12),
             child: TextField(
-              controller: user_controler,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.person),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30),),
+                hintText: "Name",
+                labelText: "Name",
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 22,right: 22,top: 12),
+            child: TextField(
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30),),
@@ -44,14 +49,24 @@ class LoginPage extends StatelessWidget {
             padding: EdgeInsets.only(left: 22,right: 22,top: 12,bottom: 10),
             child: TextField(
               obscureText: true,
-              obscuringCharacter: '-',
-              controller: pass_controler,
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.key),
+                prefixIcon: Icon(Icons.key_off),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
 
                 hintText: "Password",
                 labelText: "Password",
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 22,right: 22,top: 12,bottom: 10),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.key),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+
+                hintText: "Confirm Password",
+                labelText: "Confirm Password",
               ),
             ),
           ),
@@ -60,28 +75,17 @@ class LoginPage extends StatelessWidget {
             shape: StadiumBorder(),
             height: 60,
             minWidth: 100,
-            onPressed: (){
-              if(name==user_controler.text && password==pass_controler.text){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-              }
-              else{
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Invalid details'),
-                  backgroundColor: Colors.red,
-                ));
-              }
-              user_controler.text='';
-              pass_controler.text='';
-            }, child: Text('Login'),),
+            onPressed: (){}, child: Text('Signup'),),
           SizedBox(height: 20,),
           TextButton(
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
             },
             child: RichText(text:  TextSpan(
-              children: [
-                TextSpan(text: "Don't have an account?"),
-                TextSpan(text: "Signup.", style: TextStyle(fontWeight: FontWeight.bold))
-              ]
+                children: [
+                  TextSpan(text: "Already have an account?"),
+                  TextSpan(text: "Signin.", style: TextStyle(fontWeight: FontWeight.bold))
+                ]
             )),
           )
 
