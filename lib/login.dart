@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/home.dart';
@@ -25,14 +27,19 @@ class LoginPage extends StatelessWidget {
         //   Icon(Icons.search)
         // ],
       ),
-      body: Column(
+      body: Column(mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('LOGIN', style: GoogleFonts.atomicAge(fontSize: 30, fontWeight: FontWeight.bold),),
+          Text('LOGIN', style: GoogleFonts.playfairDisplay(fontSize: 30, fontWeight: FontWeight.bold),),
+          SizedBox(height: 10,),
+          Text('Welcome back! Login with your credentials',style: GoogleFonts.openSans(fontSize: 15),),
+          SizedBox(height: 20,),
           Padding(
-            padding: EdgeInsets.only(left: 22,right: 22,top: 12),
+            padding: const EdgeInsets.only(left: 40,right: 40,top:20,bottom: 10),
             child: TextField(
+
               controller: user_controler,
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(10),
                 prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30),),
                 hintText: "Email",
@@ -41,7 +48,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 22,right: 22,top: 12,bottom: 10),
+            padding: EdgeInsets.only(left: 40,right: 40,top: 12,bottom: 10),
             child: TextField(
               obscureText: true,
               obscuringCharacter: '-',
@@ -56,10 +63,10 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            color: Colors.green,
+            color: Colors.blue,
             shape: StadiumBorder(),
             height: 60,
-            minWidth: 100,
+            minWidth: 400,
             onPressed: (){
               if(name==user_controler.text && password==pass_controler.text){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
@@ -71,7 +78,7 @@ class LoginPage extends StatelessWidget {
               }
               user_controler.text='';
               pass_controler.text='';
-            }, child: Text('Login'),),
+            }, child: Text('Login',style: TextStyle(color: Colors.white),),),
           SizedBox(height: 20,),
           TextButton(
             onPressed: (){

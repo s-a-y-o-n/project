@@ -10,12 +10,15 @@ class Signuphm extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      body: SafeArea(
+      body: Center(
         child: Column(
 
 
           children: [
-            const Text("Hello There!", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: const Text("Hello There!", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 20,right: 20),
               child: Text('Automatic identify verification which enables you to verify your identity', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w100),),
@@ -30,17 +33,18 @@ class Signuphm extends StatelessWidget {
                 color: Colors.lightBlue,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 200,right: 200,top: 15,bottom: 15),
-                  child: const Text("Login"),
+                  child: const Text("Login", style: TextStyle(color: Colors.white),),
                 ),),
             ),
+            SizedBox(height: 10,),
             MaterialButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
             },
               shape: const StadiumBorder(),
               color: Colors.redAccent,
               child: Padding(
-                padding: const EdgeInsets.only(left: 190,right: 190,top: 15,bottom: 15),
-                child: const Text("Sign up"),
+                padding: const EdgeInsets.only(left: 195,right: 195,top: 15,bottom: 15),
+                child: const Text("Sign up", style: TextStyle(color: Colors.white),),
               ),),
           ],
         ),
