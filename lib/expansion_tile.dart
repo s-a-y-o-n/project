@@ -10,6 +10,7 @@ void main(List<String> args) {
   ));
 }
 
+// ignore: must_be_immutable
 class Expansion_tile extends StatelessWidget {
   Expansion_tile({super.key});
   var colors = [Colors.red, Colors.green, Colors.blue];
