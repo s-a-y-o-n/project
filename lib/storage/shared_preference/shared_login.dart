@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/storage/shared_preference/homepage.dart';
+import 'package:project/storage/shared_preference/shared_signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -29,8 +30,8 @@ class _Shared_loginState extends State<Shared_login> {
     preference = await SharedPreferences.getInstance();
     loggedin = preference.getBool("loggedin") ?? false;
     if (loggedin == true) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => HomePage()));
+      await Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 
@@ -58,15 +59,30 @@ class _Shared_loginState extends State<Shared_login> {
                   preference = await SharedPreferences.getInstance()!;
                   String username = uname.text;
                   String pwd = password.text;
-                  if (username != "" && pwd != "") {
-                    preference.setString("uname", username);
+                  String? usname = preference.getString("uname");
+                  String? passwd = preference.getString("pass");
+                  if (username == usname && pwd == passwd) {
+                    preference.setString("usename", username);
                     preference.setBool("loggedin", true);
 
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => HomePage()));
                   }
                 },
-                child: Text('Login'))
+                child: Text('Login')),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Shared_Signup()));
+              },
+              child: RichText(
+                  text: TextSpan(children: [
+                TextSpan(text: "Dont  have an account?"),
+                TextSpan(
+                    text: "Sign up.",
+                    style: TextStyle(fontWeight: FontWeight.bold))
+              ])),
+            )
           ],
         ),
       ),

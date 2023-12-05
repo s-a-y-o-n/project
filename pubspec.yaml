@@ -42,6 +42,9 @@ dependencies:
   flutter_custom_clippers: ^2.1.0
   introduction_screen: ^3.1.12
   flashy_tab_bar2: ^0.0.6
+  google_maps_flutter: ^2.5.0
+  shared_preferences: ^2.2.2
+  sqflite: ^2.3.0
 
 dev_dependencies:
   flutter_test:
