@@ -6,8 +6,8 @@ class SQLHelper {
   static Future<sql.Database> OpenDb() async {
     return sql.openDatabase('contact', version: 1,
         onCreate: (sql.Database db, int version) async {
-          await createTable(db);
-        });
+      await createTable(db);
+    });
   }
 
   //create Table
@@ -25,18 +25,5 @@ class SQLHelper {
     final data = {"name": cname, "phone": cphone};
     final id = db.insert('mycontacts', data);
     return id;
-  }
-// read all the data from db
-  static Future<List<Map<String,dynamic>>> readData() async{
-    final db = await SQLHelper.OpenDb();
-    return db.query("mycontacts",orderBy: 'id');// read all the datas by id
-  }
-
-  static Future<int> updateContact(int? id, String name, String phone) async {
-    final db = await SQLHelper.OpenDb();
-    final udata = {'name':name,'phone':phone};
-    final result = await db.update("mycontacts", udata, where: "id=?",whereArgs: [id]);
-    return result;
-
   }
 }

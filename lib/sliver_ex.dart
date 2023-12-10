@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-void main(){
-  runApp(MaterialApp(home: Sliver_eg(),));
+
+void main() {
+  runApp(MaterialApp(
+    home: Sliver_eg(),
+  ));
 }
+
 class Sliver_eg extends StatelessWidget {
   const Sliver_eg({super.key});
 
@@ -12,6 +16,7 @@ class Sliver_eg extends StatelessWidget {
         slivers: [
           SliverAppBar(
             floating: true,
+            pinned: true,
             elevation: 7,
             bottom: AppBar(
               title: Container(
@@ -19,21 +24,21 @@ class Sliver_eg extends StatelessWidget {
                 height: 30,
                 color: Colors.white10,
                 child: TextField(
-                  decoration: InputDecoration(hintText: 'Search', prefixIcon: Icon(Icons.search)),
+                  decoration: InputDecoration(
+                      hintText: 'Search', prefixIcon: Icon(Icons.search)),
                 ),
               ),
             ),
             title: Text('Slivers'),
-
           ),
-          SliverList(delegate: SliverChildListDelegate(List.generate(100, (index) =>
-            ListTile(
-              leading: Text('sjbdhsdv'),
-              trailing: Icon(Icons.send),
-            )
-          )))
+          SliverList(
+              delegate: SliverChildListDelegate(List.generate(
+                  100,
+                  (index) => ListTile(
+                        leading: Text('sjbdhsdv'),
+                        trailing: Icon(Icons.send),
+                      ))))
         ],
-
       ),
     );
   }

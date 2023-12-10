@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/storage/sqflite/dboperation.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -51,6 +52,7 @@ class _Sqflite_contactState extends State<Sqflite_contact> {
                     ),
                     TextField(
                       controller: phone_ctrl,
+                      keyboardType: TextInputType.phone,
                       decoration: InputDecoration(hintText: 'Phone No.'),
                     ),
                     ElevatedButton(
@@ -58,7 +60,7 @@ class _Sqflite_contactState extends State<Sqflite_contact> {
                           if (id == null) {
                             await createcontact();
                           } else {
-                            await updatecontact();
+                            // await updatecontact();
                           }
                         },
                         child: Text(id == null ? "Create" : "Update"))
@@ -70,7 +72,7 @@ class _Sqflite_contactState extends State<Sqflite_contact> {
     }
   }
 
-  createcontact() {}
-
-  updatecontact() {}
+  Future<void> createcontact() async {
+    await SQLHelper.create_contact(name_ctrl.text, phone_ctrl.text);
+  }
 }

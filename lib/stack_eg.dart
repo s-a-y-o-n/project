@@ -7,10 +7,19 @@ void main() {
 }
 
 class Stack_eg extends StatelessWidget {
-  const Stack_eg({super.key});
+  Stack_eg({super.key});
+  var title = [
+    "Privacy",
+    "Purchase History",
+    "Help & Support",
+    "Settings",
+    "Invite a friend",
+    "Logout"
+  ];
 
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text('Stack'),
@@ -18,23 +27,36 @@ class Stack_eg extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            height: 250,
-            width: 250,
+            height: h,
+            width: 300,
             color: Colors.blueGrey,
           ),
           Container(
             height: 180,
-            width: 180,
+            width: 280,
             color: Colors.yellowAccent,
           ),
           Positioned(
-            left: 150,
-            top: 30,
-            bottom: 60,
+            top: h * 0.5,
             child: Container(
-                height: 160,
-                width: 160,
-                color: Color.fromARGB(212, 17, 83, 48)),
+              height: h,
+              width: 300,
+              color: Color.fromARGB(211, 247, 247, 247),
+              child: ListView(
+                children: List.generate(
+                    6,
+                    (index) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            dense: true,
+                            title: Text(
+                              title[index],
+                              style: TextStyle(fontSize: 25),
+                            ),
+                          ),
+                        )),
+              ),
+            ),
           ),
           Container(
             height: 140,

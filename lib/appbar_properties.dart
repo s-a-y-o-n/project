@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main()
-{
+void main() {
   runApp(const MaterialApp(
     home: Appbar_propertiies(),
     debugShowCheckedModeBanner: false,
   ));
 }
+
 class Appbar_propertiies extends StatelessWidget {
   const Appbar_propertiies({super.key});
 
@@ -20,17 +20,19 @@ class Appbar_propertiies extends StatelessWidget {
         leading: const Icon(Icons.menu),
         actions: [
           const Icon(Icons.camera_alt),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           const Icon(Icons.search),
-
-          PopupMenuButton(itemBuilder: (context){
-            return [
-              const PopupMenuItem(child: Text('New Group')),
-              const PopupMenuItem(child: Text('Settings')),
-              const PopupMenuItem(child: Text('Linked devices'))
-
-            ];
-          })
+          PopupMenuButton(
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem(child: Text('New Group')),
+                const PopupMenuItem(child: Text('Settings')),
+                const PopupMenuItem(child: Text('Linked devices'))
+              ];
+            },
+          )
         ],
       ),
     );
