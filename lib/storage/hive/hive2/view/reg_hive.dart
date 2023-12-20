@@ -5,10 +5,11 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:project/storage/hive/hive2/database/hivedb.dart';
 import 'package:project/storage/hive/hive2/model/user_model.dart';
 import 'package:project/storage/hive/hive2/view/hive_login.dart';
-
+import 'package:path_provider/path_provider.dart' as path_provider;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Hive.initFlutter();
+  final dbDir=await path_provider.getApplicationDocumentsDirectory();
+  await Hive.initFlutter(dbDir.path);
   Hive.registerAdapter(UserAdapter());
   await Hive.openBox<User>('userdata');
   runApp(GetMaterialApp(

@@ -5,10 +5,12 @@ import 'package:project/storage/hive/hive2/database/hivedb.dart';
 import 'package:project/storage/hive/hive2/model/user_model.dart';
 import 'package:project/storage/hive/hive2/view/hive_home.dart';
 import 'package:project/storage/hive/hive2/view/reg_hive.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Hive.initFlutter();
+  final dbDir = await path_provider.getApplicationDocumentsDirectory();
+  await Hive.initFlutter(dbDir.path);
   Hive.registerAdapter(UserAdapter());
   await Hive.openBox<User>('userdata');
   runApp(GetMaterialApp(
@@ -85,19 +87,30 @@ class Hivelogin extends StatelessWidget {
     final email = email_ctrl.text.trim();
     final pwd = pass_ctrl.text.trim();
 
+    String? upass;
+    bool userfound = false;
     if (email != '' && pwd != '') {
       await Future.forEach(registered_users, (element) {
         if (element.email == email) {
-          if (element.password == pwd) {
-            Get.snackbar("Success", "You got in man");
-            Get.to(HiveHome());
-          } else {
-            Get.snackbar("Not that password", "Use your brain");
-          }
+          userfound = true;
+
+          upass = element.password;
         } else {
-          Get.snackbar("Thats not the way", "Go and register first Nigga");
+          userfound = false;
         }
       });
+      if (userfound == true) {
+        if (upass == pwd) {
+          Get.snackbar("Success", "You got in man");
+          Get.to(HiveHome());
+        } else {
+          Get.snackbar("That's not the password", "Use your brain");
+        }
+      } else {
+        Get.snackbar("Thats not the way", "Go and register first Nigga");
+      }
+    } else {
+      Get.snackbar("Type it!", "Type the credentials to login");
     }
   }
 }

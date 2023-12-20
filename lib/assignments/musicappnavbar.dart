@@ -1,6 +1,7 @@
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
-import 'package:project/musicapp_ui.dart';
+import 'package:project/assignments/musicapp_ui.dart';
+import 'package:project/assignments/musicapphome.dart';
 
 void main(List<String> args) {
   runApp(MaterialApp(
@@ -15,19 +16,15 @@ class Musicnavbar extends StatefulWidget {
 }
 
 class _MusicnavbarState extends State<Musicnavbar> {
-  var selectedindex = 2;
+  var selectedindex = 0;
   var screens = [
-    const Center(
-        child: Text(
-      "Home",
-      style: TextStyle(color: Colors.white),
-    )),
+    Musicapp_Home(),
     const Center(
         child: Text(
       "Search",
       style: TextStyle(color: Colors.white),
     )),
-     Musicapp(),
+    Musicapp(),
     const Center(
         child: Text(
       "More",
