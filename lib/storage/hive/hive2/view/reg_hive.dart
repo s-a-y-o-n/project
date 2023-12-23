@@ -1,22 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/adapters.dart';
+// import 'package:hive_flutter/adapters.dart';
 import 'package:project/storage/hive/hive2/database/hivedb.dart';
 import 'package:project/storage/hive/hive2/model/user_model.dart';
 import 'package:project/storage/hive/hive2/view/hive_login.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final dbDir=await path_provider.getApplicationDocumentsDirectory();
-  await Hive.initFlutter(dbDir.path);
-  Hive.registerAdapter(UserAdapter());
-  await Hive.openBox<User>('userdata');
-  runApp(GetMaterialApp(
-    home: Registration_hive(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
 
 class Registration_hive extends StatelessWidget {
   Registration_hive({super.key});

@@ -28,35 +28,35 @@ class Hivelogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: const Text("Login"),
       ),
       body: SafeArea(
           child: Column(
         children: [
-          Text(
+          const Text(
             "Login",
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           TextField(
             controller: email_ctrl,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Enter Email',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           TextField(
             controller: pass_ctrl,
             obscureText: true,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Enter Password',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ElevatedButton(
@@ -66,15 +66,15 @@ class Hivelogin extends StatelessWidget {
                 pass_ctrl.text = "";
                 email_ctrl.text = "";
               },
-              child: Text('Login')),
-          SizedBox(
+              child: const Text('Login')),
+          const SizedBox(
             height: 10,
           ),
           TextButton(
               onPressed: () {
                 Get.to(Registration_hive());
               },
-              child: Text(
+              child: const Text(
                 'Dont have an account?',
                 style: TextStyle(color: Colors.black),
               ))
@@ -83,7 +83,7 @@ class Hivelogin extends StatelessWidget {
     );
   }
 
-  void validatesignin(List<User> registered_users) async {
+  Future<void> validatesignin(List<User> registered_users) async {
     final email = email_ctrl.text.trim();
     final pwd = pass_ctrl.text.trim();
 
@@ -102,7 +102,7 @@ class Hivelogin extends StatelessWidget {
       if (userfound == true) {
         if (upass == pwd) {
           Get.snackbar("Success", "You got in man");
-          Get.to(HiveHome());
+          Get.to(const HiveHome());
         } else {
           Get.snackbar("That's not the password", "Use your brain");
         }

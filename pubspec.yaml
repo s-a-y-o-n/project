@@ -50,6 +50,7 @@ dependencies:
   email_validator: ^2.1.17
   get: ^4.6.6
   path_provider: ^2.1.1
+  provider: ^6.1.1
 
 
 dev_dependencies:
