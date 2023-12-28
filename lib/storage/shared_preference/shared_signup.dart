@@ -3,12 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:project/storage/shared_preference/shared_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Shared_Signup(),
-  ));
-}
-
 class Shared_Signup extends StatefulWidget {
   const Shared_Signup({super.key});
 
@@ -24,99 +18,95 @@ class _Shared_SignupState extends State<Shared_Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 50, right: 50),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Sign up',
-              style: TextStyle(color: Colors.black),
-              // style: GoogleFonts.playfairDisplay(
-              //     fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Just a few quick things to get started.',
-              // stylaaaae: GoogleFonts.openSans(fontSize: 15),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 22, right: 22, top: 12),
-              child: TextField(
-                controller: name_ctrl,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  hintText: "Name",
-                  labelText: "Name",
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'SIGN UP',
+            style: TextStyle(
+                color: Color.fromARGB(255, 24, 105, 49),
+                fontSize: 24,
+                fontWeight: FontWeight.w900),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 22, right: 22, top: 12),
+            child: TextField(
+              controller: name_ctrl,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.person),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
                 ),
+                hintText: "Name",
+                labelText: "Name",
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 22, right: 22, top: 12),
-              child: TextField(
-                controller: uname_ctrl,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.person),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  hintText: "Username",
-                  labelText: "Username",
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 22, right: 22, top: 12),
+            child: TextField(
+              controller: uname_ctrl,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.email_outlined),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
                 ),
+                hintText: "Email",
+                labelText: "Email",
               ),
             ),
-            Padding(
-              padding:
-                  EdgeInsets.only(left: 22, right: 22, top: 12, bottom: 10),
-              child: TextField(
-                controller: pass_ctrl,
-                obscureText: true,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.key_off),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30)),
-                  hintText: "Password",
-                  labelText: "Password",
-                ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 22, right: 22, top: 12, bottom: 10),
+            child: TextField(
+              controller: pass_ctrl,
+              obscureText: true,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.key_off),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                hintText: "Password",
+                labelText: "Password",
               ),
             ),
-            MaterialButton(
-              color: Colors.green,
-              shape: StadiumBorder(),
-              height: 60,
-              minWidth: 300,
-              onPressed: () {
-                storedata();
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Shared_login()));
-              },
-              child: Text('Create Account'),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextButton(
-              onPressed: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=>Log_in()));
-              },
-              child: RichText(
-                  text: TextSpan(children: [
-                TextSpan(text: "Already have an account?"),
-                TextSpan(
-                    text: "Sign in.",
-                    style: TextStyle(fontWeight: FontWeight.bold))
-              ])),
-            )
-          ],
-        ),
+          ),
+          MaterialButton(
+            color: Colors.green,
+            shape: StadiumBorder(),
+            height: 60,
+            minWidth: 300,
+            onPressed: () {
+              storedata();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Shared_login()));
+            },
+            child: Text('Create Account'),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Shared_login()));
+            },
+            child: RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                  text: "Already have an account?",
+                  style: TextStyle(color: Colors.black, fontSize: 15)),
+              TextSpan(
+                  text: "Sign in.",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 15))
+            ])),
+          )
+        ],
       ),
     );
   }

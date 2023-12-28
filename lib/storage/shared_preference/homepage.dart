@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late String? username = "";
+  late String? name = "";
   late SharedPreferences preference;
   @override
   void initState() {
@@ -21,8 +21,8 @@ class _HomePageState extends State<HomePage> {
   void fetch_data() async {
     preference = await SharedPreferences.getInstance();
     setState(() {
-      username =
-          preference.getString("usename") ?? ""; // Use null-aware operator
+      name = preference.getString("name") ?? "";
+      // Use null-aware cascade operator, it is used to provide a default value to the variable if the condition on the left side is null
     });
   }
 
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hello $username"),
+        title: Text("Hello $name"),
         actions: [
           IconButton(
               onPressed: () async {
@@ -42,6 +42,11 @@ class _HomePageState extends State<HomePage> {
               },
               icon: Icon(Icons.logout))
         ],
+      ),
+      body: Center(
+        child: Text(
+          'Login successful',
+        ),
       ),
     );
   }
