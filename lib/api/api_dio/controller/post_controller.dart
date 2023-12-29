@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:project/api/api_dio/model/postmodel.dart';
@@ -15,14 +16,35 @@ class PostController extends GetxController {
     isinternetconnected.value = await InternetConnectionChecker().hasConnection;
   }
 
-  void getPost() async {
+  getPost() async {
     checkinternetconnected();
     isloading.value = true;
     var response = await DioService().fetchpost(url);
     if (response.statusCode == 200) {
       response.data.forEach((element) {
-        PostModel.fromJson(element);
+        postList.add(PostModel.fromJson(element));
       });
+      isloading.value = false;
     }
+  }
+
+  scrolldown() {
+    item_ctrl.scrollTo(
+        index: postList.length,
+        duration: Duration(seconds: 5),
+        curve: Curves.bounceIn);
+    isscrolldown.value = true;
+  }
+
+  scrollup() {
+    item_ctrl.scrollTo(
+        index: 0, duration: Duration(seconds: 4), curve: Curves.bounceOut);
+    isscrolldown.value = false;
+  }
+
+  @override
+  void onInit() {
+    getPost();
+    super.onInit();
   }
 }
