@@ -61,11 +61,28 @@ class Diohome extends StatelessWidget {
         return postcontroller.getPost();
       },
       child: ScrollablePositionedList.builder(
+          itemScrollController: postcontroller.item_ctrl,
           itemCount: postcontroller.postList.length,
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () => Get.to(Diodetails()),
-              child: Card(),
+              onTap: () => Get.to(Diodetails(
+                index: index,
+              )),
+              child: Card(
+                child: ListTile(
+                  leading: Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          color: Mycolor.bgcolor,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                          child: Text(
+                              postcontroller.postList[index].id.toString()))),
+                  title: Text(postcontroller.postList[index].title),
+                  subtitle: Text(postcontroller.postList[index].body),
+                ),
+              ),
             );
           }),
     );

@@ -32,7 +32,7 @@ class PostController extends GetxController {
     item_ctrl.scrollTo(
         index: postList.length,
         duration: Duration(seconds: 5),
-        curve: Curves.bounceIn);
+        curve: Curves.bounceInOut);
     isscrolldown.value = true;
   }
 
