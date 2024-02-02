@@ -25,6 +25,7 @@ class Intro_screen extends StatelessWidget {
       imagePadding: EdgeInsets.all(10),
     );
     return IntroductionScreen(
+      // allowImplicitScrolling: true,
       pages: [
         PageViewModel(
           decoration: pageDecoration,
